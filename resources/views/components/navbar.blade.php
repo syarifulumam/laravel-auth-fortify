@@ -18,6 +18,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="/profile/edit">Change Password</a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
