@@ -3,22 +3,30 @@
         <a class="navbar-brand" href="{{ route('home') }}">Home</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+                @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
+                @else
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        User
+                        {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item" href="#">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
+                @endguest
             </ul>
         </div>
     </div>
